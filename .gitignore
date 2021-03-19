@@ -1,0 +1,14 @@
+/targets
+/build*
+/.vs
+/.vscode
+/install*
+/pkg
+*.swp
+*.log
+*.pro
+*.pro.user
+*.mdb
+*.user
+.idea
+/coverage_html
