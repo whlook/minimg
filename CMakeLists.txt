@@ -12,7 +12,7 @@ FILE(GLOB src ${CMAKE_CURRENT_SOURCE_DIR}/src/minimg.cpp)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/inc)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/inc)
-link_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/3rdparty//lib)
+LINK_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/lib/${CMAKE_SYSTEM_NAME}-${CMAKE_SYSTEM_PROCESSOR})
 
 #SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g  -fsanitize=address -fno-omit-frame-pointer -fsanitize=leak")
 
@@ -21,5 +21,5 @@ ADD_LIBRARY(minimg SHARED ${src})
 FOREACH(sample ${samples})
 	GET_FILENAME_COMPONENT(sample_name ${sample}  NAME_WE)
 	ADD_EXECUTABLE(${sample_name} ${sample})
-	TARGET_LINK_LIBRARIES(${sample_name} minimg libjpeg.a libpng.a libz.a)
+	TARGET_LINK_LIBRARIES(${sample_name} minimg libjpeg.a png z)
 ENDFOREACH()
